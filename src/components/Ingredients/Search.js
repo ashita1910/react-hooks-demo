@@ -23,11 +23,13 @@ const Search = React.memo((props) => {
             return res?.json();
           })
           .then((data) => {
-            const loadedIngredientsArr = [];
-            Object?.keys(data)?.forEach((key) => {
-              loadedIngredientsArr?.push({ id: key, ...data?.[key] });
-            });
-            loadedIngredients(loadedIngredientsArr);
+            if (data) {
+              const loadedIngredientsArr = [];
+              Object?.keys(data)?.forEach((key) => {
+                loadedIngredientsArr?.push({ id: key, ...data?.[key] });
+              });
+              loadedIngredients(loadedIngredientsArr);
+            }
           });
       }
     }, 500);
